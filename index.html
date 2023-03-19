@@ -1,0 +1,50 @@
+<div id="anti-adblock">
+  <h2>Please Disable Your Ad Blocker</h2>
+  <p>We rely on ad revenue to maintain this site. Please consider disabling your ad blocker to support us.</p>
+  <button id="disable-adblock">Disable Adblock</button>
+</div>
+
+
+<style>
+#anti-adblock {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+#disable-adblock {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#disable-adblock:hover {
+  background-color: #3e8e41;
+}
+</style>
+
+<script>
+var adBlockEnabled = false;
+var testAd = document.createElement('div');
+testAd.innerHTML = '&nbsp;';
+testAd.className = 'adsbox';
+document.body.appendChild(testAd);
+window.setTimeout(function() {
+  if (testAd.offsetHeight === 0) {
+    adBlockEnabled = true;
+  }
+  testAd.remove();
+  if (adBlockEnabled) {
+    var antiAdblock = document.getElementById('anti-adblock');
+    antiAdblock.style.display = 'block';
+    var disableAdblock = document.getElementById('disable-adblock');
+    disableAdblock.onclick = function() {
+      location.reload();
+    }
+  }
+}, 100);
+
+</script>
